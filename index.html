@@ -4,23 +4,27 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wheather App</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="icon" type="image/x-icon" href="/images/weather-app.png">
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+        <div class="container-fuild">
         <div class="card">
             <div class="search">
                 <input type="text" placeholder="Enter city name"
                     spellcheck="false">
-                <button><img src="images/search.png" alt></button>
+                <button class="btn btn-sm"><img src="images/search.png" alt></button>
                 
             <div class="location">
-                <button><img src="images/seo.png" alt="image can't load"></button>
+                <button><img src="images/placeholder.png" alt="image can't load"></button>
             </div>
             </div>
             <div class="error">Invalid city name</div>
             <div class="weather">
                 <img src="images/rain.png" class="weather-icon"
                     alt="This image can't be load">
+                    <h5 class="condition"></h5>
                 <h1 class="temp">22°C</h1>
                 <h2 class="city">Jaipur</h2>
                 <div class="details">
@@ -43,6 +47,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
         <script>
         const apiKey="212990cb9ce7f1b8bb142bc1943f2a6f";
@@ -62,6 +67,7 @@
                 let data = await response.json();
 
             document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".condition").innerHTML=data.weather[0].main
             document.querySelector(".temp").innerHTML =Math.round( data.main.temp )+ "°C";
             document.querySelector(".humadity").innerHTML = data.main.humidity +"%";
             document.querySelector(".wind").innerHTML = data.wind.speed+" km/h";
@@ -76,6 +82,8 @@
                 weatherIcon.src="images/drizzle.png"
             }else if(data.weather[0].main == "Mist"){
                 weatherIcon.src="images/mist.png";
+            }else if(data.weather[0].main == "Fog"){
+                weatherIcon.src="images/fog.png";
             }
 
             document.querySelector(".weather").style.display = "block";
@@ -113,6 +121,7 @@
                 let data = await response.json();
                 console.log(data)
             document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".condition").innerHTML=data.weather[0].main
             document.querySelector(".temp").innerHTML =Math.round( data.main.temp )+ "°C";
             document.querySelector(".humadity").innerHTML = data.main.humidity +"%";
             document.querySelector(".wind").innerHTML = data.wind.speed+" km/h";
@@ -127,6 +136,8 @@
                 weatherIcon.src="images/drizzle.png"
             }else if(data.weather[0].main == "Mist"){
                 weatherIcon.src="images/mist.png";
+            }else if(data.weather[0].main == "Fog"){
+                weatherIcon.src="images/fog.png";
             }
 
             document.querySelector(".weather").style.display = "block";
