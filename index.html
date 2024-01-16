@@ -129,7 +129,7 @@
                 document.querySelector(".weather").style.display="none";
             }else{
                 let data = await response.json();
-                console.log(data)
+                searchBox.value=""
                 if(data.name!=undefined){    
                     document.querySelector(".city").innerHTML = data.name;}
             document.querySelector(".condition").innerHTML=data.weather[0].main
