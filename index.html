@@ -82,7 +82,7 @@
             document.querySelector(".humadity").innerHTML = data.main.humidity +"%";
             document.querySelector(".wind").innerHTML = data.wind.speed+" km/h";
 
-            if(data.weather[0].main == "Cloud"){
+            if(data.weather[0].main == "Clouds"){
                 weatherIcon.src="images/clouds.png";
             }else if(data.weather[0].main == "Clear"){
                 weatherIcon.src="images/clear.png";
@@ -92,8 +92,8 @@
                 weatherIcon.src="images/drizzle.png"
             }else if(data.weather[0].main == "Mist"){
                 weatherIcon.src="images/mist.png";
-            }else if(data.weather[0].main == "Fog"){
-                weatherIcon.src="images/fog.png";
+            }else if(data.weather[0].main == "Fog" ||data.weather[0].main == "Haze"||data.weather[0].main == "Smoke"){
+                weatherIcon.src="images/haze.png";
             }
 
             document.querySelector(".weather").style.display = "block";
@@ -102,7 +102,6 @@
 
             
         }
-
         searchButton.addEventListener("click",()=>{
             checkWeather(searchBox.value);
             if(searchBox.value==null){
@@ -137,7 +136,7 @@
             document.querySelector(".humadity").innerHTML = data.main.humidity +"%";
             document.querySelector(".wind").innerHTML = data.wind.speed+" km/h";
 
-            if(data.weather[0].main == "Cloud"){
+            if(data.weather[0].main === "Clouds"){
                 weatherIcon.src="images/clouds.png";
             }else if(data.weather[0].main == "Clear"){
                 weatherIcon.src="images/clear.png";
@@ -147,8 +146,8 @@
                 weatherIcon.src="images/drizzle.png"
             }else if(data.weather[0].main == "Mist"){
                 weatherIcon.src="images/mist.png";
-            }else if(data.weather[0].main == "Fog"){
-                weatherIcon.src="images/fog.png";
+            }else if(data.weather[0].main == "Fog" ||data.weather[0].main == "Haze"||data.weather[0].main == "Smoke"){
+                weatherIcon.src="images/haze.png";
             }
 
             document.querySelector(".weather").style.display = "block";
